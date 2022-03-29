@@ -15,19 +15,26 @@ variables:
   
 
 steps:
-- script: |
-    dotnet restore **/dotnet/aspnetcore/functionApp/Application/*.sln
-    dotnet build  --configuration Release
+# - script: |
+    # dotnet restore **/dotnet/aspnetcore/functionApp/Application/*.sln
+    # dotnet build  --configuration Release
 # - task: NuGetCommand@2
 #   inputs:
 #     command: 'restore'
 #     restoreSolution: '$(solution)'
 
-# - task: VSBuild@1
-#   inputs:
-#     solution: '$(solution)'
-#     platform: '$(buildPlatform)'
-#     configuration: '$(buildConfiguration)'
+- task: DotNetCoreCLI@2
+  inputs:
+    command: 'restore'
+    projects: |
+      '$(solution)' 
+
+
+- task: VSBuild@1
+  inputs:
+    solution: '$(solution)'
+    platform: '$(buildPlatform)'
+    configuration: '$(buildConfiguration)'
 
 
 - task: DotNetCoreCLI@2
