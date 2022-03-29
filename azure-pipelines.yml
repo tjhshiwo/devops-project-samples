@@ -16,8 +16,8 @@ variables:
 
 steps:
 - script: |
-    dotnet restore
-    dotnet build **/dotnet/aspnetcore/functionApp/Application/SampleFunctionApp/*.csproj --configuration Release
+    dotnet restore **/dotnet/aspnetcore/functionApp/Application/*.sln
+    dotnet build  --configuration Release
 # - task: NuGetCommand@2
 #   inputs:
 #     command: 'restore'
